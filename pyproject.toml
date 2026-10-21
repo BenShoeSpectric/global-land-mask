@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "global-land-mask"
+version = "1.1.0"
+description = "Check whether latitude/longitude coordinates are on land or at sea"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [{ name = "Todd Karin", email = "pvtools.lbl@gmail.com" }]
+dependencies = ["numpy>=1.20"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/BenShoeSpectric/global-land-mask"
+
+[tool.setuptools.package-data]
+global_land_mask = ["*.npz", "*.csv", "data/*.npz", "data/*.json"]
+
+[tool.setuptools.packages.find]
+include = ["global_land_mask*"]
