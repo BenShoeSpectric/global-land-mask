@@ -1,0 +1,12 @@
+{
+  "dataset": "Natural Earth Land",
+  "resolution": "10m",
+  "scale": "1:10,000,000",
+  "source": "https://github.com/nvkelso/natural-earth-vector",
+  "source_commit": "ca96624a56bd078437bca8184e78163e5039ad19",
+  "source_file": "ne_10m_land.shp",
+  "natural_earth_version": "5.1.1",
+  "license": "Public domain; see https://www.naturalearthdata.com/about/terms-of-use/",
+  "ring_count": 6838,
+  "point_count": 446175
+}

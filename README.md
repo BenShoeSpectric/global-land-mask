@@ -15,6 +15,35 @@ pip install global-land-mask
 Requirements:
 - numpy
 
+# Selectable datasets
+
+The original 1 km GLOBE raster remains the default and the existing API is
+unchanged. A `LandMask` object can instead use Natural Earth's public-domain
+land polygons at 1:10 million (`10m`) or 1:50 million (`50m`) map scale:
+
+```python
+from global_land_mask import LandMask
+
+detailed = LandMask(dataset="natural-earth", resolution="10m")
+medium = LandMask(dataset="natural-earth", resolution="50m")
+legacy = LandMask(dataset="globe", resolution="1km")
+
+print(detailed.is_land(40.7128, -74.0060))
+```
+
+The Natural Earth scale names describe cartographic detail, not distances in
+metres. Natural Earth masks use point-in-polygon containment, while the GLOBE
+mask uses nearest-neighbor lookup on its raster grid. Scalars and broadcastable
+NumPy arrays are accepted by `is_land()` and `is_ocean()`.
+
+Lakes count as land by default, matching the legacy package behavior. Pass
+`include_lakes_as_land=False` to honor holes present in a polygon dataset.
+
+The bundled land polygons come from the official
+[Natural Earth vector repository](https://github.com/nvkelso/natural-earth-vector).
+Natural Earth data is in the public domain; see its
+[terms of use](https://www.naturalearthdata.com/about/terms-of-use/).
+
 # Description
 This python module, global-land-mask, contains scripts for checking whether a lat/lon point is on land or sea. In order to do this, we use the GLOBE dataset, which samples the entire earth at 1 km resolution. We then simply extract all 'invalid' values from this elevation map and save to file.
 
